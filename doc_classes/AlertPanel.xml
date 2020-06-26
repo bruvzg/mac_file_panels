@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="AlertPanel" inherits="Control" category="Core" version="3.2">
+	<brief_description>
+		A modal alert message sheet attached to a window.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_button">
+			<return type="void">
+			</return>
+			<argument index="0" name="button" type="String">
+			</argument>
+			<description>
+				Adds a button to the alert.
+			</description>
+		</method>
+		<method name="clear_buttons">
+			<return type="void">
+			</return>
+			<description>
+				Clear all buttons.
+			</description>
+		</method>
+		<method name="popup">
+			<return type="void">
+			</return>
+			<description>
+				Shows the alert modally as a sheet attached to the main window.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="buttons" type="PackedStringArray" setter="set_buttons" getter="get_buttons" default="PackedStringArray( &quot;OK&quot; )">
+			The array of response buttons for the alert.
+		</member>
+		<member name="info" type="String" setter="set_info" getter="get_info" default="&quot;&quot;">
+			Additional information about the alert.
+		</member>
+		<member name="message" type="String" setter="set_message" getter="get_message" default="&quot;&quot;">
+			The main message of the alert.
+		</member>
+		<member name="mode" type="int" setter="set_mode" getter="get_mode" enum="AlertPanel.Mode" default="1">
+			Style used by the alert.
+		</member>
+		<member name="panel_icon" type="Image" setter="set_panel_icon" getter="get_panel_icon">
+			The custom icon displayed in the alert.
+		</member>
+		<member name="suppression" type="bool" setter="set_suppression" getter="get_suppression" default="false">
+			If [code]true[/code] alert includes a suppression checkbox.
+		</member>
+		<member name="suppression_text" type="String" setter="set_suppression_text" getter="get_suppression_text" default="&quot;Do not show this message again.&quot;">
+			Suppression checkbox title.
+		</member>
+		<member name="visible" type="bool" setter="set_visible" getter="is_visible" override="true" default="false" />
+	</members>
+	<signals>
+		<signal name="button_pressed">
+			<argument index="0" name="button_num" type="int">
+			</argument>
+			<argument index="1" name="suppress" type="bool">
+			</argument>
+			<description>
+				Emitted when the user presses a button.
+			</description>
+		</signal>
+	</signals>
+	<constants>
+		<constant name="MODE_CRIT" value="0" enum="Mode">
+		</constant>
+		<constant name="MODE_INFO" value="1" enum="Mode">
+		</constant>
+		<constant name="MODE_WARN" value="2" enum="Mode">
+		</constant>
+	</constants>
+</class>

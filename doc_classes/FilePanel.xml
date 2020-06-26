@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="FilePanel" inherits="Control" category="Core" version="3.2">
+	<brief_description>
+		A modal sheet for selecting files or directories in the filesystem, attached to a window.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_filter">
+			<return type="void">
+			</return>
+			<argument index="0" name="filter" type="String">
+			</argument>
+			<description>
+				Adds [code]filter[/code] as a custom filter; [code]filter[/code] should be of the form [code]"filename.extension ; Description"[/code]. For example, [code]"*.png ; PNG Images"[/code].
+			</description>
+		</method>
+		<method name="clear_filters">
+			<return type="void">
+			</return>
+			<description>
+				Clear all filters.
+			</description>
+		</method>
+		<method name="popup">
+			<return type="void">
+			</return>
+			<description>
+				Shows the panelmodally as a sheet attached to the main window.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="current_dir" type="String" setter="set_current_dir" getter="get_current_dir" default="[code]OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)[/code]">
+			The current working directory of the file panel.
+		</member>
+		<member name="current_file" type="String" setter="set_current_file" getter="get_current_file" default="&quot;&quot;">
+			The currently selected file of the file panel.
+		</member>
+		<member name="filters" type="PackedStringArray" setter="set_filters" getter="get_filters" default="PackedStringArray(  )">
+			The available file type filters. For example, this shows only [code].png[/code] and [code].gd[/code] files: [code]set_filters(PackedStringArray(["*.png ; PNG Images","*.gd ; GDScript Files"]))[/code].
+		</member>
+		<member name="mode" type="int" setter="set_mode" getter="get_mode" enum="FilePanel.Mode" default="3">
+			The panel's open or save mode, which affects the selection behavior. See enum [code]Mode[/code] constants.
+		</member>
+		<member name="show_hidden_files" type="bool" setter="set_show_hidden_files" getter="get_show_hidden_files" default="false">
+			If [code]true[/code], the panel will show hidden files.
+		</member>
+		<member name="visible" type="bool" setter="set_visible" getter="is_visible" override="true" default="false" />
+	</members>
+	<signals>
+		<signal name="dir_selected">
+			<argument index="0" name="dir" type="String">
+			</argument>
+			<description>
+				Emitted when the user selects a directory.
+			</description>
+		</signal>
+		<signal name="file_selected">
+			<argument index="0" name="path" type="String">
+			</argument>
+			<description>
+				Emitted when the user selects a file.
+			</description>
+		</signal>
+		<signal name="files_selected">
+			<argument index="0" name="paths" type="PackedStringArray">
+			</argument>
+			<description>
+				Emitted when the user selects multiple files.
+			</description>
+		</signal>
+	</signals>
+	<constants>
+		<constant name="MODE_OPEN_FILE" value="0" enum="Mode">
+		</constant>
+		<constant name="MODE_OPEN_FILES" value="1" enum="Mode">
+		</constant>
+		<constant name="MODE_OPEN_DIR" value="2" enum="Mode">
+		</constant>
+		<constant name="MODE_SAVE_FILE" value="3" enum="Mode">
+		</constant>
+	</constants>
+</class>

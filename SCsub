@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+Import('env')
+Import('env_modules')
+
+env_mac_panels = env_modules.Clone()
+
+env_mac_panels.add_source_files(env.modules_sources, "register_types.cpp")
+env_mac_panels.add_source_files(env.modules_sources, "alert_panel.mm")
+env_mac_panels.add_source_files(env.modules_sources, "file_panel.mm")
