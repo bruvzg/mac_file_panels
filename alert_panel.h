@@ -6,6 +6,7 @@
 #define ALERT_PANEL_H
 
 #include "scene/gui/control.h"
+#include "core/version_generated.gen.h"
 
 class AlertPanel : public Control {
 	GDCLASS(AlertPanel, Control);
@@ -55,7 +56,11 @@ public:
 
 	virtual void popup();
 
+#if (VERSION_MAJOR == 3)
 	virtual String get_configuration_warning() const;
+#else
+	virtual String get_configuration_warning() const override;
+#endif
 
 	AlertPanel();
 };

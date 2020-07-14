@@ -6,8 +6,6 @@
 
 #include "platform/osx/os_osx.h"
 
-#include "core/version_generated.gen.h"
-
 #include <AppKit/AppKit.h>
 
 void AlertPanel::_bind_methods() {
